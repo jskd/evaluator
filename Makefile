@@ -25,3 +25,6 @@ mrproper: clean
 pdf:
 	pdflatex -output-directory $(DELIV_PATH)/ $(RAPPORT).tex 
 	rm */*.aux */*.log
+
+tar: clean
+	tar -zcvf PooCAv_Project_G7.tar.gz .gitignore Makefile LICENSE projetv1.pdf README.md UML_v1.pdf deliverables/ bin/ src/

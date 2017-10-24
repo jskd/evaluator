@@ -24,5 +24,5 @@ mrproper: clean
 	rm -rf $(EXEC_FILE)
 
 pdf:
-	pdflatex -output-directory $(DELIV_PATH)/ $(RAPPORT).tex 
+	pdflatex -output-directory $(DELIV_PATH)/ $(DELIV_PATH)/$(RAPPORT).tex 
 	rm */*.aux */*.log

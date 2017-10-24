@@ -14,8 +14,7 @@ $(BIN_DIR)$(EXEC_FILE):
 	$(CC) $(SRC_DIR)$(EXEC_FILE) -d $(BIN_DIR)
 
 run:
-	@cd $(BIN_DIR)
-	scala $(MAIN_CLASS)
+	scala -classpath "./$(BIN_DIR)" $(MAIN_CLASS)
 
 clean:
 	rm -rf */*.class

@@ -1,7 +1,7 @@
 # evaluator
 
 Membres de l'équipe :
-Li XIANG
+Xiang LI
 Jérôme SKODA
 Joaquim LEFRANC
 Hassane DIABY

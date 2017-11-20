@@ -1,0 +1,52 @@
+Version DIABY Hassane
+
+Compréhension du sujet:
+
+- Système evaluation automatique (ou manuel)
+- Type de questions
+- Usager : Admin - Client
+- Service Client-Serveur de type REST
+- Cours : C, Java, Python, ocaml
+
+
+Usagers :
+
+- Administrateur (celui qui note)
+  - Gestion du contenu des questionnaires
+  - Rédaction des réponses
+  - Accès aux données des étudiants
+  - Notation
+  - Création / Suppression de cours
+  - Observation de la progression des clients (par client, par cours,...)
+  - Notifie les utilisateurs de la création ou suppression de cours
+
+- Client (Celui qui répond aux questions)
+  - Accès aux questionnaires
+  - Inscription / Désinscription au cours dispos
+  - Répondre à des questions de cours ou d'exam
+  - Observation de la progression
+
+Cours
+ - Seul l'admin peut créer ou supprimer des cours
+ - le client peut s'inscrire ou se désinscrire d'un ou plusieurs cours
+ - Type de cours : programmation (C, Java, Python, ocaml,...), algorithme,...
+ - Type de notation : automatique (par exemple pour les QCM ou le code),
+    manuel (l'admin regarde les réponses données, puis note via des critères et un barême,
+    ou bien il note de manière libre, si possible)
+
+Questions :
+  - QCM : Soit une bonne réponse possible par question, soit plusieurs bonnes réponses (Trouver toutes les bonnes réponses)
+  - Code : Soit un code incomplet à compléter, soit un code entier à rédiger, soit un code faux à corriger
+  - Rédaction : Question ouverte ou le client répond de manière libre (corrigé manuellement par l'admin)
+  - Images : à voir...
+
+Mode :
+  Entraînement : l'utilisateur choisit le type de question auquel il souhaite répondre, ou il peut faire un mélange (à voir)
+    - temps illimité
+    - il peut arrêter la session en cours et en recommencer une nouvelle
+    - il peut passer des questions et y revenir plus tard
+    - peut demander à être noté ou non (à voir)
+  Examen: Soit le format lui est imposé, soit il choisit le type de questionnaire
+    - Temps limité pour toute la session, pour quelques questions ou pas de limite de temps
+    - Il ne peut pas arrêter la session en cours mais il peut passer des questions afin d'y revenir plus tard
+    - Sera noté (of course)

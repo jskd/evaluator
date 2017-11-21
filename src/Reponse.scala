@@ -1,8 +1,8 @@
-abstract class Reponse{
-	def reponseToString():String
+abstract class Reponse(_choix:String){
+	val reponse = _choix
+	def reponseToString():String = reponse
 }
 
-class QCMReponse(choix:String) extends Reponse{
-	val reponse = choix
-	override def reponseToString():String = reponse
+class CommonReponse(_choix:String) extends Reponse(_choix){
+	// 
 }

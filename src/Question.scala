@@ -3,10 +3,11 @@ abstract class Question(_id:Int,_intitule:String,_answer:String){
 	var intitule = _intitule
 	var answer = _answer
 	def display = printf(intitule+"\n")
+	def isCorrect(reponse:Reponse):Boolean
 }
 
 trait ImageQ extends Question{
-	var image_path: String
+	var image_path:String = "Can't find :("
 	override def display = {
 		super.display
 		//TODO afficher l'image
@@ -25,27 +26,27 @@ trait OptionsQ extends Question{
 
 }
 
-/*
-au lieu de retour un boolean, on peut aussi retour un double pour savoir combien de pourcent notre réponse correspond à answer
-*/
-trait CorrectBoolean{
-	def isCorrect(reponse:Reponse):Boolean
-}
-trait CorrectDouble{
-	def isCorrect(reponse:Reponse):Double
-}
 
-abstract class Questionnaire(_id:Int,_type:Int){
-	var id_q = _id;
-	var type_q = _type
-	var questions : List[Question]
-}
+
 
 class QCMQuestion(_id:Int,_intitule:String,_answer:String,_opts:List[String]) 
 extends Question(_id,_intitule,_answer) 
 with OptionsQ
-with CorrectBoolean
 {
 	options = _opts
+	override def isCorrect(reponse:Reponse):Boolean = answer equals reponse.reponseToString
+}
+
+class FillQuestion(_id:Int,_intitule:String,_answer:String)
+extends Question(_id,_intitule,_answer) 
+{
+	override def isCorrect(reponse:Reponse):Boolean = answer equals reponse.reponseToString
+}
+
+class ImageFillQuestion(_id:Int,_intitule:String,_answer:String,_path:String)
+extends Question(_id,_intitule,_answer) 
+with ImageQ
+{
+	image_path = _path
 	override def isCorrect(reponse:Reponse):Boolean = answer equals reponse.reponseToString
 }

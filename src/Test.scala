@@ -3,28 +3,33 @@ import scala.io.{ StdIn }
 
 object Test{
 	def main(args:Array[String]){
-		printf("==========test QCM===========\n")
-
+		printf("==========test Q===========\n")
+		val testQnaire = new Questionnaire(1,0);
 		val qcm1 = new QCMQuestion(1,"What langue do we learn?","A",List("A.scala ","B.java ","C.c# ","D.python ","E.C "))
-		qcm1.display
+		var qcm2 = new QCMQuestion(2,"20 - 5 = ?","CD",List("A.12 ","B.10 ","C.5*3 ","D.15 "))
+		var fill1 = new FillQuestion(3,"Where are you?","France")
+		var ifill2 = new ImageFillQuestion(4,"What's in this photo?","error"," test image_path !")
+		testQnaire.addQuestion(qcm1)
+		testQnaire.addQuestion(qcm2)
+		testQnaire.addQuestion(fill1)
+		testQnaire.addQuestion(ifill2)
 
-		val re1 = StdIn.readLine()
-		val reponse1 = new QCMReponse(re1)
-		if(qcm1 isCorrect reponse1){
-			printf("Bingo !!!!\n")
-		}else{
-			printf(":( :( :(\n")
+		var total = testQnaire.questions.size
+	
+		var bingo = 0
+		for(q <- testQnaire.questions){
+			q.display
+			val res = StdIn.readLine()
+			if(q.isCorrect(new CommonReponse(res))){
+				printf("Bingo !!!\n")
+				bingo+=1
+			}else{
+				printf(":( Faux :(\n")
+			}
 		}
 
-		var qcm2 = new QCMQuestion(1,"20 - 5 = ?","CD",List("A.12 ","B.10 ","C.5*3 ","D.15 "))
-		qcm2.display
-		val re2 = StdIn.readLine()
-		val reponse2 = new QCMReponse(re2)
-		if(qcm2 isCorrect reponse2){
-			printf("Bingo !!!!\n")
-		}else{
-			printf(":( :( :(\n")
-		}
-		printf("==========Fin QCM===========\n")
+		printf("==========Fin Q===========\n")
+		printf("bingo/total: "+bingo+"/"+total+"\n")
+		printf("accuracy: "+bingo*1.0/total+"\n")
 	}
 }

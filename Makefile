@@ -17,6 +17,10 @@ $(BIN_DIR)$(EXEC_FILE):
 run:
 	scala -classpath "./$(BIN_DIR)" $(MAIN_CLASS)
 
+runserv:
+	cd project/ && ./sbt run
+	@cd ..
+
 clean:
 	rm -rf */*.class
 

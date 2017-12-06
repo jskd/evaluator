@@ -20,4 +20,8 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     Ok(views.html.index("EVALUATOR"))
   }
 
+  DB.withConnection { conn =>
+  // do whatever you need with the connection
+  }
+
 }

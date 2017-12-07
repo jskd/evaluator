@@ -1,4 +1,4 @@
-@(style: String = "scala")
+@(user: String = "", style: String = "scala")
 
 @defining(play.core.PlayVersion.current) { version =>
 
@@ -9,27 +9,35 @@
 </article>
 
 <aside>
-  <h3>Connexion</h3>
-  <form action="/auth/signin" method="post">
-    Pseudo
-    <input type="text" name="pseudo"><br>
-    Password
-    <input type="password" name="password"> <br><br>
-    <input type="submit" value="Connexion">
-  </form>
-</aside>
+  @if(user == "") {
+    <h3>Connexion</h3>
+    <form action="/auth/signin" method="post">
+      Pseudo
+      <input type="text" name="pseudo"><br>
+      Password
+      <input type="password" name="password"> <br><br>
+      <input type="submit" value="Connexion">
+    </form>
 
-<aside>
-  <h3>Inscription</h3>
-  <form action="/auth/signup" method="post">
-    <input type="radio" name="usertype" value="admin"> Administrateur
-    <input type="radio" name="usertype" value="member" checked="true"> Etudiant <br>
-    Pseudo
-    <input type="text" name="pseudo"><br>
-    Password
-    <input type="password" name="password"> <br><br>
-    <input type="submit" value="Connexion">
-  </form>
+    <h3>Inscription</h3>
+    <form action="/auth/signup" method="post">
+      <input type="radio" name="usertype" value="admin"> Administrateur
+      <input type="radio" name="usertype" value="member" checked="true"> Etudiant <br>
+      Pseudo
+      <input type="text" name="pseudo"><br>
+      Password
+      <input type="password" name="password"> <br><br>
+      <input type="submit" value="Connexion">
+    </form>
+  } else {
+    <h3>Mon compte</h3>
+    <ul>
+      <li><a href="">Mes cours</a></li>
+      <li><a href="">Mes notes</a></li>
+      <li><a href="/auth/logout">Deconnexion</a></li>
+    </ul>
+  }
+
 </aside>
 
 </div>

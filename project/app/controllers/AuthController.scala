@@ -9,18 +9,7 @@ import play.api.data.Forms._
 @Singleton
 class AuthController @Inject()(cc: ControllerComponents, db: Database) extends AbstractController(cc) {
 
-  /*
-  var resultat = ""
-  db.withConnection { conn =>
-    val stmt = conn.createStatement
-    val rs = stmt.executeQuery("SELECT * FROM users;")
-    rs.next()
-    resultat += rs.getString("pseudo")
-  }
-  */
-
   def signUp = Action {implicit request =>
-
     val inscriptionForm = Form(
       tuple(
         "pseudo" -> text,
@@ -39,7 +28,8 @@ class AuthController @Inject()(cc: ControllerComponents, db: Database) extends A
       try{
         db.withConnection { conn =>
            val stmt = conn.createStatement
-           val rs = stmt.execute("INSERT INTO users (pseudo, password) VALUES ('" + pseudo + "', '" + password + "', '" + admin + "');")
+           val rs = stmt.execute("INSERT INTO users (pseudo, password, admin) VALUES ('"
+              + pseudo + "', '" + password + "', '" + admin + "');")
 
            message = "Félicitations " + pseudo + ", vous êtes inscrit !"
         }
@@ -66,24 +56,31 @@ class AuthController @Inject()(cc: ControllerComponents, db: Database) extends A
     var message = "";
 
     if(pseudo != "" && password != ""){
-
       var resultat = ""
+
       db.withConnection { conn =>
         val stmt = conn.createStatement
-        val rs = stmt.executeQuery("SELECT * FROM users WHERE pseudo = '" + pseudo + "' and password = '" + password + "';")
+        val rs = stmt.executeQuery("SELECT * FROM users WHERE pseudo = '"
+          + pseudo + "' and password = '" + password + "';")
 
         if(rs.next()){
           message = "Bonjour " + pseudo + ", vous êtes connecté !"
+          Redirect(routes.HomeController.index()).withSession("connected" -> pseudo)
+          //Ok(views.html.index()).withSession("connected" -> pseudo)
         }
         else{
           message = "L'utilisateur " + pseudo + " n'existe pas."
+          Ok(views.html.main("Connexion"){views.html.signin(message)})
         }
       }
-
     }
     else{
       message = "Erreur: Vous devez remplir les champs."
+      Ok(views.html.main("Connexion"){views.html.signin(message)})
     }
-    Ok(views.html.main("Connexion"){views.html.signin(message)})
+  }
+
+  def logout = Action {implicit request =>
+    Redirect(routes.HomeController.index()).withSession()
   }
 }

@@ -28,7 +28,6 @@ trait OptionsQ extends Question{
 
 
 
-
 class QCMQuestion(_id:Int,_intitule:String,_answer:String,_opts:List[String]) 
 extends Question(_id,_intitule,_answer) 
 with OptionsQ

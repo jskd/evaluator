@@ -5,5 +5,6 @@ class Questionnaire(_id:Int,_type:Int){
 	var type_q = _type
 	var questions : List[Question] = Nil
 	def addQuestion(q:Question) = questions = questions :+ q
+	def addQuestion(q:List[Question]) = questions = questions ::: q
 }
 

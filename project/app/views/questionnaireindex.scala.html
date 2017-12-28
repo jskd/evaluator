@@ -1,0 +1,39 @@
+@(qs: List[Questionnaire])
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Question</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+        <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
+    </head>
+    <body>
+      <section id="top">
+        <div class="wrapper">
+          <h1>EVALUATOR</h1>
+        </div>
+      </section>
+      <ul>
+        @for(q <- qs){
+          <li>Questionnaire: @q.id_q</li>
+          @for(qn <- q.questions){
+            <li>Question: @qn.id  
+                <form action="/questionnaire/delete/@q.id_q/@qn.id" method="get">
+                    <input type="submit" value="Delete">
+                </form>
+            </li>
+            <li>@Html(qn.display)</li>
+            <br/>
+          }
+          <form action="/questionnaire/add" method="post">
+            QuestionID:
+            <input type="hidden" name="qnid" value="@q.id_q">
+            <input type="text" name="qid">
+            <input type="submit" value="Add">
+          </form>
+          <br/>
+        }
+        </ul>
+    </body>
+</html>

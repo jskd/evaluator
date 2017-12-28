@@ -2,19 +2,36 @@ package models
 
 abstract class DBUtil{
     type T
-    var questions:Map[Int,T] = Map()
-    def getAll():List[T] = questions.values.toList
-    def getById(id:Int):T = questions.apply(id)
-    def delete(id:Int):Unit = questions -= (id)
-    def add(id:Int,t:T):Unit = questions += (id->t)
+    var dbmaps:Map[Int,T] = Map()
+    def getAll():List[T] = dbmaps.values.toList
+    def getById(id:Int):T = dbmaps.apply(id)
+    def delete(id:Int):Unit = dbmaps -= (id)
+    def add(id:Int,t:T):Unit = dbmaps += (id->t)
+    def has(id:Int):Boolean = dbmaps.contains(id)
     //def search():List[T]
 }
 
+object DBQuestionnaire extends DBUtil{
+    type T = Questionnaire
+    def applySeeder():Unit = {
+        if(dbmaps.isEmpty){
+            var q1 = new Questionnaire(1,1)
+            var q2 = new Questionnaire(2,0)
+            var q3 = new Questionnaire(3,1)
+            q1.addqid(List(1,3,5,7,9,11))
+            q2.addqid(List(2,4,6,8,10))
+            q3.addqid(List(1,4,6,5))
+            add(1,q1)
+            add(2,q2)
+            add(3,q3)
+        }
+    }
+}
 
-object ListDB extends DBUtil{
+object DBQuestion extends DBUtil{
     type T = Question
     def applySeeder():Unit = {
-        if(questions.isEmpty){
+        if(dbmaps.isEmpty){
             var qcm1 = new QCMQuestion(1,"What langue do we learn?","A",List("A.scala ","B.java ","C.c# ","D.python ","E.C "))
             var qcm2 = new QCMQuestion(2,"20 - 5 = ?","CD",List("A.12 ","B.10 ","C.5*3 ","D.15 "))
             var fill1 = new FillQuestion(3,"Where are you?","France")

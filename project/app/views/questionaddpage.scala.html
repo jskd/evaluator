@@ -1,0 +1,62 @@
+@(nowid: Int)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Question</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+        <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
+    </head>
+    <body>
+      <section id="top">
+        <div class="wrapper">
+          <h1>Add questions</h1>
+        </div>
+      </section>
+      <hr width="100%" size="1" align="center" color="gray" />
+      <h1>QCM</h1>
+      <hr width="100%" size="1" align="center" color="gray" />
+      <div>
+            
+            <form action="/question/addqcm" method="post">
+                <input type="hidden" name="qid" value="@nowid">
+                Title: <input type="text" name="title"><br/>
+                OP A: <input type="text" name="op1"><br/>
+                OP B: <input type="text" name="op2"><br/>
+                OP C: <input type="text" name="op3"><br/>
+                OP D: <input type="text" name="op4"><br/>
+                OP E: <input type="text" name="op5"><br/>
+                OP F: <input type="text" name="op6"><br/>
+                Answer : <input type="text" name="answer"><br/>
+                <input type="submit" value="Add">
+            </form>
+      </div>
+      <hr width="100%" size="1" align="center" color="gray" />
+      <h1>Fill</h1>
+      <hr width="100%" size="1" align="center" color="gray" />
+      <div>
+            
+            <form action="/question/addfill" method="post">
+                <input type="hidden" name="qid" value="@nowid">
+                Title: <input type="text" name="title"><br/>
+                Answer : <input type="text" name="answer"><br/>
+                <input type="submit" value="Add">
+            </form>
+      </div>
+
+      <hr width="100%" size="1" align="center" color="gray" />
+      <h1>ImageFill</h1>
+      <hr width="100%" size="1" align="center" color="gray" />
+      <div>
+            
+            <form action="/question/addimage" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="qid" value="@nowid">
+                Title: <input type="text" name="title"><br/>
+                Answer : <input type="text" name="answer"><br/>
+                Image : <input type="file" name="pic"><br/>
+                <input type="submit" value="Add">
+            </form>
+      </div>
+    </body>
+</html>

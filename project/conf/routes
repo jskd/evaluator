@@ -22,8 +22,15 @@ GET     /question/all               controllers.QuestionController.getAll
 GET     /question/get/:id           controllers.QuestionController.getById(id:Int)
 GET     /question/delete/:id        controllers.QuestionController.delete(id:Int)
 
+GET     /question/addpage           controllers.QuestionController.addpage
+POST    /question/addqcm            controllers.QuestionController.addqcm
+POST    /question/addfill            controllers.QuestionController.addfill
+POST    /question/addimage           controllers.QuestionController.addimage
+
 
 GET     /questionnaire/get/:id           controllers.QuestionnaireController.getById(id:Int)
 GET     /questionnaire/index             controllers.QuestionnaireController.index
 GET     /questionnaire/delete/:qnid/:qid    controllers.QuestionnaireController.delete(qnid:Int,qid:Int)
 POST    /questionnaire/add               controllers.QuestionnaireController.add
+
+

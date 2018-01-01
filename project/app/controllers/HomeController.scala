@@ -14,7 +14,7 @@ class HomeController @Inject()(cc: ControllerComponents, db: Database) extends A
   def index = Action { request =>
 
     request.session.get("connected").map { user =>
-      Ok(views.html.index(user))
+      Ok(views.html.homeSession(user))
     }.getOrElse {
       Ok(views.html.index())
       //Unauthorized("Oops, you are not connected")

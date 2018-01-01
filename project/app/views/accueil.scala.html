@@ -2,14 +2,8 @@
 
 @defining(play.core.PlayVersion.current) { version =>
 
-<div id="content" class="wrapper doc">
-<article>
-  <h1>Bienvenue sur Evaluator !</h1>
-  <h2>Liste des cours disponibles</h2>
-</article>
+<h1>Bienvenue sur Evaluator !</h1>
 
-<aside>
-  @if(user == "") {
     <h3>Connexion</h3>
     <form action="/auth/signin" method="post">
       Pseudo
@@ -19,7 +13,7 @@
       <input type="submit" value="Connexion">
     </form>
 
-    <h3>Inscription</h3>
+    <h3>Nouveau Membre ?</h3>
     <form action="/auth/signup" method="post">
       <input type="radio" name="usertype" value="admin"> Administrateur
       <input type="radio" name="usertype" value="member" checked="true"> Etudiant <br>
@@ -29,16 +23,5 @@
       <input type="password" name="password"> <br><br>
       <input type="submit" value="Connexion">
     </form>
-  } else {
-    <h3>Mon compte</h3>
-    <ul>
-      <li><a href="">Mes cours</a></li>
-      <li><a href="">Mes notes</a></li>
-      <li><a href="/auth/logout">Deconnexion</a></li>
-    </ul>
-  }
 
-</aside>
-
-</div>
 }

@@ -14,7 +14,7 @@ class AuthController @Inject()(cc: ControllerComponents, db: Database) extends A
       tuple(
         "pseudo" -> text,
         "password" -> text,
-        "usertype" -> optional(text)
+        "usertype" -> text
       )
     )
 
@@ -23,7 +23,7 @@ class AuthController @Inject()(cc: ControllerComponents, db: Database) extends A
     var message = "";
 
     if(pseudo != "" && password != ""){
-      if(usertype == admin) admin = 1
+      if(usertype == "admin") admin = 1
 
       try{
         db.withConnection { conn =>
@@ -31,7 +31,7 @@ class AuthController @Inject()(cc: ControllerComponents, db: Database) extends A
            val rs = stmt.execute("INSERT INTO users (pseudo, password, admin) VALUES ('"
               + pseudo + "', '" + password + "', '" + admin + "');")
 
-           message = "Félicitations " + pseudo + ", vous êtes inscrit !"
+           message = "Félicitations " + pseudo + " (" + admin + "), vous êtes inscrit !"
         }
       }catch{
         case e: Exception => message = "Erreur: Le pseudo existe déjà.";
@@ -65,7 +65,7 @@ class AuthController @Inject()(cc: ControllerComponents, db: Database) extends A
 
         if(rs.next()){
           message = "Bonjour " + pseudo + ", vous êtes connecté !"
-          Redirect(routes.HomeController.index()).withSession("connected" -> pseudo)
+          Redirect(routes.HomeController.index()).withSession("connected" -> pseudo, "admin" -> rs.getBoolean("admin").toString)
           //Ok(views.html.index()).withSession("connected" -> pseudo)
         }
         else{

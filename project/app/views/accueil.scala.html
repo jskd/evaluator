@@ -1,4 +1,4 @@
-@(user: String = "", style: String = "scala")
+@(user: String = "", admin: Boolean = false, style: String = "scala")
 
 @defining(play.core.PlayVersion.current) { version =>
 
@@ -27,11 +27,12 @@
       <input type="text" name="pseudo"><br>
       Password
       <input type="password" name="password"> <br><br>
-      <input type="submit" value="Connexion">
+      <input type="submit" value="Inscription">
     </form>
   } else {
     <h3>Mon compte</h3>
     <ul>
+      @if(admin){ <li><a href="">Nouveau cours</a></li> }
       <li><a href="">Mes cours</a></li>
       <li><a href="">Mes notes</a></li>
       <li><a href="/auth/logout">Deconnexion</a></li>

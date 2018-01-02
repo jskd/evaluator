@@ -16,7 +16,7 @@
       </section>
       <ul>
         @for(q <- testQnaire){
-          <li>Question: @q.id               
+          <li>Question: @q.id
             <form action="/question/delete/@q.id" method="get">
             <input type="submit" value="Delete">
             </form></li>

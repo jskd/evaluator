@@ -1,4 +1,4 @@
-@(user: String = "", admin: Boolean = false, style: String = "scala")
+@(qs: List[Questionnaire], user: String = "", admin: Boolean = false, style: String = "scala")
 
 @defining(play.core.PlayVersion.current) { version =>
 
@@ -6,6 +6,12 @@
 <article>
   <h1>Bienvenue sur Evaluator !</h1>
   <h2>Liste des cours disponibles</h2>
+
+  <ul class="list_lastcourses">
+    @for(q <- qs){
+      <li>Questionnaire: @q.id_q</li>
+    }
+  </ul>
 </article>
 
 <aside>

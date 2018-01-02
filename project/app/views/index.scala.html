@@ -1,4 +1,4 @@
-@(user: String = "", admin: Boolean = false)
+@(qs: List[Questionnaire], user: String = "", admin: Boolean = false)
 
 @*
  * Call the `main` template with two arguments. The first
@@ -11,6 +11,6 @@
      * Get an `Html` object by calling the built-in Play welcome
      * template and passing a `String` message.
      *@
-    @accueil(user, admin, style = "scala")
+    @accueil(qs, user, admin, style = "scala")
 
 }

@@ -14,11 +14,16 @@
           <h1>Add questions</h1>
         </div>
       </section>
+
+      <div id="content" class="wrapper doc">
+      <article>
+        <h2>Ajouter une question</h2>
+
       <hr width="100%" size="1" align="center" color="gray" />
       <h1>QCM</h1>
       <hr width="100%" size="1" align="center" color="gray" />
       <div>
-            
+
             <form action="/question/addqcm" method="post">
                 <input type="hidden" name="qid" value="@nowid">
                 Title: <input type="text" name="title"><br/>
@@ -36,7 +41,7 @@
       <h1>Fill</h1>
       <hr width="100%" size="1" align="center" color="gray" />
       <div>
-            
+
             <form action="/question/addfill" method="post">
                 <input type="hidden" name="qid" value="@nowid">
                 Title: <input type="text" name="title"><br/>
@@ -49,7 +54,7 @@
       <h1>ImageFill</h1>
       <hr width="100%" size="1" align="center" color="gray" />
       <div>
-            
+
             <form action="/question/addimage" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="qid" value="@nowid">
                 Title: <input type="text" name="title"><br/>
@@ -58,5 +63,6 @@
                 <input type="submit" value="Add">
             </form>
       </div>
+    </article>
     </body>
 </html>

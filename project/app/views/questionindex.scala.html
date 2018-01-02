@@ -14,15 +14,21 @@
           <h1>EVALUATOR</h1>
         </div>
       </section>
-      <ul>
-        @for(q <- testQnaire){
-          <li>Question: @q.id
-            <form action="/question/delete/@q.id" method="get">
-            <input type="submit" value="Delete">
-            </form></li>
-          <li>@Html(q.display)</li>
-          <br/>
-        }
-        </ul>
+
+      <div id="content" class="wrapper doc">
+      <article>
+        <h2>Liste des questions</h2>
+
+        <ul>
+          @for(q <- testQnaire){
+            <li>Question: @q.id
+              <form action="/question/delete/@q.id" method="get">
+              <input type="submit" value="Delete">
+              </form></li>
+            <li>@Html(q.display)</li>
+            <br/>
+          }
+          </ul>
+        </article>
     </body>
 </html>

@@ -14,11 +14,17 @@
           <h1>EVALUATOR</h1>
         </div>
       </section>
+
+      <div id="content" class="wrapper doc">
+      <article>
+        <h2>Liste des questionnaires</h2>
+
+
       <ul>
         @for(q <- qs){
           <li>Questionnaire: @q.id_q</li>
           @for(qn <- q.questions){
-            <li>Question: @qn.id  
+            <li>Question: @qn.id
                 <form action="/questionnaire/delete/@q.id_q/@qn.id" method="get">
                     <input type="submit" value="Delete">
                 </form>
@@ -34,6 +40,8 @@
           </form>
           <br/>
         }
-        </ul>
+      </ul>
+
+      </article>
     </body>
 </html>

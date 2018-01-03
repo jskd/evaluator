@@ -5,6 +5,7 @@
     <head>
         <title>Cours</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/custom.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
         <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
     </head>
@@ -12,19 +13,22 @@
       <section id="top">
         <div class="wrapper">
           <h1>
-              Cours: @c.id  @c.categorie
+              EVALUATOR
           </h1>
         </div>
       </section>
 
       <div id="content" class="wrapper doc">
       <article>
+        <h2>Cours @c.id : @c.categorie</h2>
         @for(q <- c.qnaire){
             <div class="block_liste_cours">
-                <p>Questionnaire : @q.id_q  <a href="/questionnaire/get/@q.id_q" >Voir</a> </p>
-                <form action="/cours/delete/@c.id/@q.id_q" method="get">
-                    <input type="submit" value="Delete">
-                </form>
+                <p>Questionnaire : @q.id_q (12/20)</p>
+                <div class="liste_actions">
+                  <!-- SI UTILISATEUR INSCRIT AU COURS-->
+                  <a class="lien_unsuscribe" href="/cours/delete/@c.id/@q.id_q" alt="Delete" title="Delete"></a>
+                  <a class="lien_consult" href="/questionnaire/get/@q.id_q" alt="Voir le questionnaire" title="Voir le questionnaire"></a>
+                </div>
             </div>
           }
         <form action="/cours/add" method="post">

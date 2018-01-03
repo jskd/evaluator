@@ -35,3 +35,8 @@ GET     /questionnaire/get/:id           controllers.QuestionnaireController.get
 GET     /questionnaire/index             controllers.QuestionnaireController.index
 GET     /questionnaire/delete/:qnid/:qid    controllers.QuestionnaireController.delete(qnid:Int,qid:Int)
 POST    /questionnaire/add               controllers.QuestionnaireController.add
+
+
+GET     /cours/get/:id              controllers.CoursController.getById(id:Int)
+POST    /cours/add               controllers.CoursController.add
+GET     /cours/delete/:cid/:qid    controllers.CoursController.delete(cid:Int,qid:Int)

@@ -36,7 +36,7 @@ class QuestionController @Inject()(cc: ControllerComponents, db: Database) exten
 
   def addpage = Action { 
     DBQuestion.applySeeder()
-    var nowid = DBQuestion.dbmaps.size
+    var nowid = DBQuestion.dbmaps.size + 1
     Ok(views.html.questionaddpage(nowid))
   }
 

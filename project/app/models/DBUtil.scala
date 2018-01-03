@@ -28,6 +28,24 @@ object DBQuestionnaire extends DBUtil{
     }
 }
 
+object DBCours extends DBUtil{
+    type T = Cours
+    def applySeeder():Unit = {
+        if(dbmaps.isEmpty){
+            var q1 = new Cours(1,"Math")
+            var q2 = new Cours(2,"Info")
+            var q3 = new Cours(3,"Tonkha")
+            q1.addqid(List(1))
+            q2.addqid(List(2,1,3))
+            q3.addqid(List(2))
+            add(1,q1)
+            add(2,q2)
+            add(3,q3)
+        }
+    }
+}
+
+
 object DBQuestion extends DBUtil{
     type T = Question
     def applySeeder():Unit = {

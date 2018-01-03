@@ -1,4 +1,4 @@
-@(qs: List[Questionnaire], user: String = "", admin: Boolean = false, style: String = "scala")
+@(qs: List[Cours], user: String = "", admin: Boolean = false, style: String = "scala")
 
 @defining(play.core.PlayVersion.current) { version =>
 
@@ -9,13 +9,13 @@
 
   @for(q <- qs){
     <div class="block_liste_cours">
-        <p>Questionnaire: @q.id_q </p>
+        <p>Cours: @q.id  @q.categorie </p>
 
         @if(user != "") {
         <div class="liste_actions">
           <!-- SI UTILISATEUR INSCRIT AU COURS-->
           <a class="lien_unsuscribe" href="" alt="Désinscription" title="Désinscription"></a>
-          <a class="lien_consult" href="questionnaire/get/@q.id_q" alt="Voir le cours" title="Voir le cours"></a>
+          <a class="lien_consult" href="cours/get/@q.id" alt="Voir le cours" title="Voir le cours"></a>
 
           <!-- SINON-->
           <a class="lien_inscription" href="" alt="Inscription" title="Inscription"></a>

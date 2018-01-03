@@ -17,6 +17,8 @@ class HomeController @Inject()(cc: ControllerComponents, db: Database) extends A
 
     DBQuestionnaire.applySeeder()
     DBQuestion.applySeeder()
+    DBCours.applySeeder()
+    /**
     var qlist = DBQuestionnaire.getAll()
     for(ql <- qlist){
         ql.questions = Nil
@@ -25,6 +27,8 @@ class HomeController @Inject()(cc: ControllerComponents, db: Database) extends A
                 ql.addQuestion(DBQuestion.getById(id))
         }
     }
+    */
+    var qlist = DBCours.getAll()
 
     request.session.get("connected").map { user =>
       request.session.get("admin").map { admin =>

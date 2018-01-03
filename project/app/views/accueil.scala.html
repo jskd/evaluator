@@ -7,11 +7,14 @@
   <h1>Bienvenue sur Evaluator !</h1>
   <h2>Liste des cours disponibles</h2>
 
-  <ul class="list_lastcourses">
-    @for(q <- qs){
-      <li>Questionnaire: @q.id_q</li>
-    }
-  </ul>
+  @for(q <- qs){
+    <div class="block_liste_cours">
+        <p>Questionnaire: @q.id_q </p>
+        <div class="liste_actions">
+          <a class="lien_consult" href="" alt="Voir le cours" title="Voir le cours"></a>
+        </div>
+    </div>
+  }
 </article>
 
 <aside>

@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+.block_liste_cours{
+	width: 630px;
+	height: 40px;
+	margin:auto;
+	margin-bottom: 10px;
+
+	background-color: #F9FAE9;
+	border: solid lightgrey 1px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	transition:linear all 0.2s;
+
+	font-style: italic;
+	font-size: 14px;
+	font-family:Verdana, Geneva, sans-serif;
+}
+
+.block_liste_cours:hover{
+	background-color: #E9F3F9;
+	box-shadow: 0px 0px 7px #CCC;
+	border: solid #999 1px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	transition:linear all 0.1s;
+}
+
+.block_liste_cours img{
+	float: left;
+	margin-top: 8px;
+	margin-left: 10px;
+}
+
+.block_liste_cours p{
+	float: left;
+	width: 450px;
+	margin-top: 12px;
+	margin-left: 10px;
+}
+
+.liste_actions{
+	float: right;
+	width: 130px;
+	height: 35px;
+	margin-top: 5px;
+}
+
+.liste_actions a{
+	float: right;
+	display: block;
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+}
+
+.lien_consult{
+	background-image: url(../images/read_off.png);
+	background-size: contain;
+}
+
+.lien_consult:hover{
+	background-image: url(../images/read.png);
+	background-size: contain;
+}

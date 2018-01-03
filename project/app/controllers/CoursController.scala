@@ -6,6 +6,7 @@ import play.api.db._
 import play.api.data._
 import play.api.data.Forms._
 import models._
+import scala.util.Try
 
 /**
  * This controller creates an `Action` to handle HTTP requests to "questions"
@@ -17,6 +18,26 @@ class CoursController @Inject()(cc: ControllerComponents, db: Database) extends 
     DBCours.applySeeder()
     var nowid = DBCours.dbmaps.size + 1
     Ok(views.html.create_cours(nowid))
+  }
+
+  def my_courses() = Action{ request =>
+    /* TODO */
+    DBQuestionnaire.applySeeder()
+    DBQuestion.applySeeder()
+    DBCours.applySeeder()
+
+    var qlist = DBCours.getAll()
+
+    request.session.get("connected").map { user =>
+      request.session.get("admin").map { admin =>
+        Ok(views.html.my_courses(qlist, user, Try(admin.toBoolean).getOrElse(false)))
+      }.getOrElse {
+        Ok(views.html.my_courses(qlist, user))
+      }
+    }.getOrElse {
+      Redirect(routes.HomeController.index())
+      //Unauthorized("Oops, you are not connected")
+    }
   }
 
   def add_cours() = Action{implicit request =>

@@ -18,7 +18,8 @@ POST    /auth/signin                controllers.AuthController.signIn
 GET     /auth/logout                controllers.AuthController.logout
 
 GET     /cours/create_new           controllers.CoursController.create_new
-POST     /cours/addcours             controllers.CoursController.add_cours
+POST    /cours/addcours             controllers.CoursController.add_cours
+GET     /cours/my_courses           controllers.CoursController.my_courses
 
 GET     /question/index             controllers.QuestionController.index
 GET     /question/all               controllers.QuestionController.getAll

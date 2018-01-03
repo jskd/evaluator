@@ -26,45 +26,6 @@
   }
 </article>
 
-<aside>
-  @if(user == "") {
-    <h3>Connexion</h3>
-    <form action="/auth/signin" method="post">
-      Pseudo
-      <input type="text" name="pseudo"><br>
-      Password
-      <input type="password" name="password"> <br><br>
-      <input type="submit" value="Connexion">
-    </form>
-
-    <h3>Inscription</h3>
-    <form action="/auth/signup" method="post">
-      <input type="radio" name="usertype" value="admin"> Administrateur
-      <input type="radio" name="usertype" value="member" checked="true"> Etudiant <br>
-      Pseudo
-      <input type="text" name="pseudo"><br>
-      Password
-      <input type="password" name="password"> <br><br>
-      <input type="submit" value="Inscription">
-    </form>
-  } else {
-    <h3>Mon compte</h3>
-    <ul>
-      @if(admin){ <li><a href="cours/create_new">Nouveau cours</a></li> }
-      <li><a href="">Mes cours</a></li>
-      <li><a href="">Mes notes</a></li>
-      <li><a href="/auth/logout">Deconnexion</a></li>
-    </ul>
-  }
-
-  <hr width="100%" size="1" align="center" color="gray" />
-  <a href="/question/addpage">Add a question</a>
-  <br/>
-  <a href="/question/index">See All Questions</a>
-  <br/>
-  <a href="/questionnaire/index">See All Questionnaires</a>
-
-</aside>
-
+@menu(user, admin, style = "scala")
 </div>
 }

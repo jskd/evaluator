@@ -10,9 +10,18 @@
   @for(q <- qs){
     <div class="block_liste_cours">
         <p>Questionnaire: @q.id_q </p>
+
+        @if(user != "") {
         <div class="liste_actions">
-          <a class="lien_consult" href="" alt="Voir le cours" title="Voir le cours"></a>
+          <!-- SI UTILISATEUR INSCRIT AU COURS-->
+          <a class="lien_unsuscribe" href="" alt="Désinscription" title="Désinscription"></a>
+          <a class="lien_consult" href="questionnaire/get/@q.id_q" alt="Voir le cours" title="Voir le cours"></a>
+
+          <!-- SINON-->
+          <a class="lien_inscription" href="" alt="Inscription" title="Inscription"></a>
         </div>
+      }
+
     </div>
   }
 </article>

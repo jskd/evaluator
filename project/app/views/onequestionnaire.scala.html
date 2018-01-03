@@ -20,9 +20,11 @@
           </h1>
         </div>
       </section>
-      <ul>
 
-          <li>Questionnaire: @qnaire.id_q</li>
+      <div id="content" class="wrapper doc">
+      <article>
+        <h2>Questionnaire : @qnaire.id_q</h2>
+        <ul>
           <ul>
             @for(qn <- qnaire.questions){
                 <li>@Html(qn.display)</li>
@@ -30,5 +32,7 @@
             }
           </ul>
         </ul>
+      </article>
+    </div>
     </body>
 </html>

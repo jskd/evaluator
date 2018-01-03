@@ -56,6 +56,16 @@
 	margin-right: 10px;
 }
 
+.lien_inscription{
+	background-image: url(../images/Accept-icon.png);
+	background-size: contain;
+}
+
+.lien_unsuscribe{
+	background-image: url(../images/close-icon.png);
+	background-size: contain;
+}
+
 .lien_consult{
 	background-image: url(../images/read_off.png);
 	background-size: contain;

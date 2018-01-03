@@ -17,6 +17,9 @@ POST    /auth/signup                controllers.AuthController.signUp
 POST    /auth/signin                controllers.AuthController.signIn
 GET     /auth/logout                controllers.AuthController.logout
 
+GET     /cours/create_new           controllers.CoursController.create_new
+POST     /cours/addcours             controllers.CoursController.add_cours
+
 GET     /question/index             controllers.QuestionController.index
 GET     /question/all               controllers.QuestionController.getAll
 GET     /question/get/:id           controllers.QuestionController.getById(id:Int)
@@ -32,5 +35,3 @@ GET     /questionnaire/get/:id           controllers.QuestionnaireController.get
 GET     /questionnaire/index             controllers.QuestionnaireController.index
 GET     /questionnaire/delete/:qnid/:qid    controllers.QuestionnaireController.delete(qnid:Int,qid:Int)
 POST    /questionnaire/add               controllers.QuestionnaireController.add
-
-

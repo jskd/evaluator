@@ -11,6 +11,9 @@ CREATE TABLE users (
     UNIQUE KEY (pseudo)
 );
 
+INSERT INTO users (pseudo, password, admin) VALUES ('admin', 'admin', 1);
+INSERT INTO users (pseudo, password, admin) VALUES ('user', 'user', 0);
+
 # --- !Downs
 
 DROP TABLE users;

@@ -11,4 +11,4 @@
 
 ``` make runserv ```
 
-Page d'acceuil: localhost:9000
+Page d'accueil: http://localhost:9000

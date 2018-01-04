@@ -41,6 +41,29 @@
 	margin-left: 10px;
 }
 
+.one_question{
+	width: 630px;
+	height: auto;
+	margin:auto;
+	margin-bottom: 15px;
+	padding:5px;
+
+	background-color: #FFF;
+	border: solid lightgrey 1px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	transition:linear all 0.2s;
+
+	font-style: italic;
+	font-size: 14px;
+	font-family:Verdana, Geneva, sans-serif;
+}
+
+.one_question p{
+	margin-left: 15px;
+}
+
 .liste_actions{
 	float: right;
 	width: 130px;

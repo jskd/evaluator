@@ -5,6 +5,7 @@
     <head>
         <title>Question</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/custom.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
         <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
     </head>
@@ -19,19 +20,20 @@
       <article>
         <h2>Liste des questionnaires</h2>
 
-
-      <ul>
         @for(q <- qs){
-          <li>Questionnaire: @q.id_q</li>
-          @for(qn <- q.questions){
-            <li>Question: @qn.id
-                <form action="/questionnaire/delete/@q.id_q/@qn.id" method="get">
-                    <input type="submit" value="Delete">
-                </form>
-            </li>
-            <li>@Html(qn.display)</li>
-            <br/>
-          }
+
+          <div class="one_questionnaire">
+            <p>Questionnaire: @q.id_q</p>
+            @for(qn <- q.questions){
+              <div class="block_liste_cours">
+                <p>Question: @qn.id</p>
+                <div class="liste_actions">
+                  <a class="lien_unsuscribe" href="/question/delete/@qn.id" alt="Delete" title="Delete"></a>
+                </div>
+              </div>
+            }
+          </div>
+
           <form action="/questionnaire/add" method="post">
             QuestionID:
             <input type="hidden" name="qnid" value="@q.id_q">
@@ -40,8 +42,9 @@
           </form>
           <br/>
         }
-      </ul>
 
       </article>
+      @menu()
+    </div>
     </body>
 </html>

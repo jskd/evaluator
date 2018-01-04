@@ -24,6 +24,11 @@
       <input type="submit" value="Inscription">
     </form>
   } else {
+    <h3>Utilisateur</h3>
+    <ul>
+      <li>Pseudo: @user
+      <li>Role: @if(admin){ Administrateur } else { Etudiant }
+    </ul>
     <h3>Mon compte</h3>
     <ul>
       @if(admin){ <li><a href="/cours/create_new">Nouveau cours</a></li> }

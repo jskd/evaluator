@@ -2,10 +2,10 @@
 
 ## Membres de l'équipe
 
-* Xiang LI
-* Jérôme SKODA
-* Joaquim LEFRANC
-* Hassane DIABY
+* Xiang LI <xiangfr007@gmail.com>
+* Jérôme SKODA <contact@jeromeskoda.fr>
+* Joaquim LEFRANC <lefrancjoaquim@gmail.com>
+* Hassane DIABY <hasdiaby@gmail.com>
 
 ## Démarrage rapide
 

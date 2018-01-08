@@ -21,7 +21,7 @@ GET     /cours/create_new           controllers.CoursController.create_new
 POST    /cours/addcours             controllers.CoursController.add_cours
 GET     /cours/my_courses           controllers.CoursController.my_courses
 GET     /cours/get/:id              controllers.CoursController.getById(id:Int)
-POST    /cours/add               controllers.CoursController.add
+GET    /cours/add/:cid/:qid               controllers.CoursController.add(cid:Int,qid:Int)
 GET     /cours/delete/:cid/:qid    controllers.CoursController.delete(cid:Int,qid:Int)
 
 GET     /question/index             controllers.QuestionController.index

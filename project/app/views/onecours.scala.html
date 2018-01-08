@@ -1,4 +1,4 @@
-@(c: Cours, user: String = "", admin: Boolean = false)
+@(c: Cours,  qs: List[Questionnaire], user: String = "", admin: Boolean = false)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +31,21 @@
                 </div>
             </div>
           }
+          <hr/>
+
+          <h2>Questionnaires disponibles</h2>
+
+          @for(q <- qs){
+              <div class="block_liste_cours">
+                  <p>Questionnaire : @q.id_q </p>
+                  <div class="liste_actions">
+                    <!-- SI UTILISATEUR INSCRIT AU COURS-->
+                    <a class="lien_add" href="/cours/add/@c.id/@q.id_q" alt="Voir le questionnaire" title="Voir le questionnaire"></a>
+                    <a class="lien_consult" href="/questionnaire/get/@q.id_q" alt="Voir le questionnaire" title="Voir le questionnaire"></a>                  
+                  </div>
+              </div>
+            }
+
         <form action="/cours/add" method="post">
         QuestionnaireID:
         <input type="hidden" name="cid" value="@c.id">

@@ -16,8 +16,8 @@ class CoursController @Inject()(cc: ControllerComponents, db: Database) extends 
 
   def create_new() = Action{ request =>
     DBCours.applySeeder()
+    DBQuestionnaire.applySeeder()
     var nowid = DBCours.dbmaps.size + 1
-
 
     request.session.get("connected").map { user =>
       request.session.get("admin").map { admin =>
@@ -72,11 +72,13 @@ class CoursController @Inject()(cc: ControllerComponents, db: Database) extends 
             c.addQnaire(DBQuestionnaire.getById(id))
     }
 
+    var qlist = DBQuestionnaire.getAll()
+
     request.session.get("connected").map { user =>
       request.session.get("admin").map { admin =>
-        Ok(views.html.onecours(c, user, Try(admin.toBoolean).getOrElse(false)))
+        Ok(views.html.onecours(c, qlist, user, Try(admin.toBoolean).getOrElse(false)))
       }.getOrElse {
-        Ok(views.html.onecours(c, user))
+        Ok(views.html.onecours(c, qlist, user))
       }
     }.getOrElse {
       Redirect(routes.HomeController.index())
@@ -84,17 +86,19 @@ class CoursController @Inject()(cc: ControllerComponents, db: Database) extends 
     }
   }
 
-  def add = Action {implicit request =>
-
+  def add(cid:Int,qid:Int) = Action {implicit request =>
+    /*
     val addForm = Form(
       tuple(
         "cid" -> text,
         "qid" -> text,
       )
     )
+
     val (cid, qid) = addForm.bindFromRequest.get
+    */
     var c = DBCours.getById(cid.toInt)
-    if(qid != "") c.addqid(qid.toInt)
+    if( qid != "") c.addqid(qid.toInt)
     Redirect(routes.CoursController.getById(cid.toInt))
   }
 

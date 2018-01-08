@@ -42,7 +42,6 @@ class HomeController @Inject()(cc: ControllerComponents, db: Database) extends A
       user_id = 2
 
     qlist.foreach( question =>
-
       db.withConnection { conn =>
         val stmt = conn.createStatement
         val rs = stmt.executeQuery("SELECT * FROM inscription WHERE id_user = '"
@@ -54,10 +53,9 @@ class HomeController @Inject()(cc: ControllerComponents, db: Database) extends A
         else
         {
           question.inscrit = false
-
         }
       }
-)
+    )
 
     request.session.get("connected").map { user =>
       request.session.get("admin").map { admin =>

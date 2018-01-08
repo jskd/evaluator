@@ -1,4 +1,4 @@
-@(c: Cours)
+@(c: Cours, user: String = "", admin: Boolean = false)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,6 +38,7 @@
         <input type="submit" value="Add">
         </form>
       </article>
+      @menu(user, admin)
     </div>
     </body>
 </html>

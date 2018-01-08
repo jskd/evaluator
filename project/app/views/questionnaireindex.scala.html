@@ -1,4 +1,4 @@
-@(qs: List[Questionnaire])
+@(qs: List[Questionnaire], user: String = "", admin: Boolean = false)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +44,7 @@
         }
 
       </article>
-      @menu()
+      @menu(user, admin)
     </div>
     </body>
 </html>

@@ -6,6 +6,7 @@ import play.api.db._
 import play.api.data._
 import play.api.data.Forms._
 import models._
+import scala.util.Try
 
 /**
  * This controller creates an `Action` to handle HTTP requests to "questions"
@@ -13,7 +14,7 @@ import models._
 @Singleton
 class QuestionnaireController @Inject()(cc: ControllerComponents, db: Database) extends AbstractController(cc) {
 
-  def index = Action { 
+  def index = Action { request =>
     DBQuestionnaire.applySeeder()
     DBQuestion.applySeeder()
     var qlist = DBQuestionnaire.getAll()
@@ -24,10 +25,21 @@ class QuestionnaireController @Inject()(cc: ControllerComponents, db: Database) 
                 ql.addQuestion(DBQuestion.getById(id))
         }
     }
-    Ok(views.html.questionnaireindex(qlist))
+
+    request.session.get("connected").map { user =>
+      request.session.get("admin").map { admin =>
+        Ok(views.html.questionnaireindex(qlist, user, Try(admin.toBoolean).getOrElse(false)))
+      }.getOrElse {
+        Ok(views.html.questionnaireindex(qlist, user))
+      }
+    }.getOrElse {
+      Redirect(routes.HomeController.index())
+      //Unauthorized("Oops, you are not connected")
+    }
+
   }
 
-  def getById(id:Int) = Action{
+  def getById(id:Int) = Action{ request =>
     DBQuestionnaire.applySeeder()
     DBQuestion.applySeeder()
     var qnaire = DBQuestionnaire.getById(id)
@@ -36,7 +48,17 @@ class QuestionnaireController @Inject()(cc: ControllerComponents, db: Database) 
         if(DBQuestion.has(id))
             qnaire.addQuestion(DBQuestion.getById(id))
     }
-    Ok(views.html.onequestionnaire(qnaire))
+
+    request.session.get("connected").map { user =>
+      request.session.get("admin").map { admin =>
+        Ok(views.html.onequestionnaire(qnaire, user, Try(admin.toBoolean).getOrElse(false)))
+      }.getOrElse {
+        Ok(views.html.onequestionnaire(qnaire, user))
+      }
+    }.getOrElse {
+      Redirect(routes.HomeController.index())
+      //Unauthorized("Oops, you are not connected")
+    }
   }
 
   def delete(qnid:Int,qid:Int) = Action{

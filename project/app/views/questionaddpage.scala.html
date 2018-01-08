@@ -1,4 +1,4 @@
-@(nowid: Int)
+@(nowid: Int, user: String = "", admin: Boolean = false)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,6 +64,6 @@
             </form>
       </div>
     </article>
-    @menu()
+    @menu(user, admin)
     </body>
 </html>

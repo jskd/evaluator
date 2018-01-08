@@ -14,14 +14,24 @@ import scala.util.Try
 @Singleton
 class CoursController @Inject()(cc: ControllerComponents, db: Database) extends AbstractController(cc) {
 
-  def create_new() = Action{
+  def create_new() = Action{ request =>
     DBCours.applySeeder()
     var nowid = DBCours.dbmaps.size + 1
-    Ok(views.html.create_cours(nowid))
+
+
+    request.session.get("connected").map { user =>
+      request.session.get("admin").map { admin =>
+        Ok(views.html.create_cours(nowid, user, Try(admin.toBoolean).getOrElse(false)))
+      }.getOrElse {
+        Ok(views.html.create_cours(nowid, user))
+      }
+    }.getOrElse {
+      Redirect(routes.HomeController.index())
+      //Unauthorized("Oops, you are not connected")
+    }
   }
 
   def my_courses() = Action{ request =>
-    /* TODO */
     DBQuestionnaire.applySeeder()
     DBQuestion.applySeeder()
     DBCours.applySeeder()
@@ -53,7 +63,7 @@ class CoursController @Inject()(cc: ControllerComponents, db: Database) extends 
     Redirect(routes.HomeController.index())
   }
 
-  def getById(id:Int) = Action{
+  def getById(id:Int) = Action{ request =>
     DBQuestionnaire.applySeeder()
     var c = DBCours.getById(id)
     c.qnaire = Nil
@@ -61,7 +71,17 @@ class CoursController @Inject()(cc: ControllerComponents, db: Database) extends 
         if(DBQuestionnaire.has(id))
             c.addQnaire(DBQuestionnaire.getById(id))
     }
-    Ok(views.html.onecours(c))
+
+    request.session.get("connected").map { user =>
+      request.session.get("admin").map { admin =>
+        Ok(views.html.onecours(c, user, Try(admin.toBoolean).getOrElse(false)))
+      }.getOrElse {
+        Ok(views.html.onecours(c, user))
+      }
+    }.getOrElse {
+      Redirect(routes.HomeController.index())
+      //Unauthorized("Oops, you are not connected")
+    }
   }
 
   def add = Action {implicit request =>

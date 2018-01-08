@@ -1,4 +1,4 @@
-@(qnaire: Questionnaire)
+@(qnaire: Questionnaire, user: String = "", admin: Boolean = false)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +37,7 @@
           <input class="button_green" type="submit" value="Sauvegarder"/>
         </form>
       </article>
-      @menu()
+      @menu(user, admin)
     </div>
     </body>
 </html>

@@ -1,4 +1,4 @@
-@(question: Question)
+@(question: Question, user: String = "", admin: Boolean = false)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,5 +18,7 @@
         <pre>Question: @question.id</pre>
         <li>@Html(question.display)</li>
         </ul>
+
+      @menu(user, admin)
     </body>
 </html>

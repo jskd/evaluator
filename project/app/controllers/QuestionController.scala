@@ -7,26 +7,57 @@ import play.api.data._
 import play.api.data.Forms._
 import models._
 import java.io.File
+import scala.util.Try
 /**
  * This controller creates an `Action` to handle HTTP requests to "questions"
  */
 @Singleton
 class QuestionController @Inject()(cc: ControllerComponents, db: Database) extends AbstractController(cc) {
 
-  def index = Action { 
+  def index = Action { request =>
     DBQuestion.applySeeder()
-    Ok(views.html.questionindex(DBQuestion.getAll()))
+
+    request.session.get("connected").map { user =>
+      request.session.get("admin").map { admin =>
+        Ok(views.html.questionindex(DBQuestion.getAll(), user, Try(admin.toBoolean).getOrElse(false)))
+      }.getOrElse {
+        Ok(views.html.questionindex(DBQuestion.getAll(), user))
+      }
+    }.getOrElse {
+      Redirect(routes.HomeController.index())
+      //Unauthorized("Oops, you are not connected")
+    }
   }
 
-  def getAll = Action {
+  def getAll = Action { request =>
     DBQuestion.applySeeder()
-    Ok(views.html.questionindex(DBQuestion.getAll()))
+
+    request.session.get("connected").map { user =>
+      request.session.get("admin").map { admin =>
+        Ok(views.html.questionindex(DBQuestion.getAll(), user, Try(admin.toBoolean).getOrElse(false)))
+      }.getOrElse {
+        Ok(views.html.questionindex(DBQuestion.getAll(), user))
+      }
+    }.getOrElse {
+      Redirect(routes.HomeController.index())
+      //Unauthorized("Oops, you are not connected")
+    }
   }
 
-  def getById(id:Int) = Action{
+  def getById(id:Int) = Action{ request =>
     DBQuestion.applySeeder()
     val question = DBQuestion.getById(id)
-    Ok(views.html.onequestion(question))
+
+    request.session.get("connected").map { user =>
+      request.session.get("admin").map { admin =>
+        Ok(views.html.onequestion(question, user, Try(admin.toBoolean).getOrElse(false)))
+      }.getOrElse {
+        Ok(views.html.onequestion(question, user))
+      }
+    }.getOrElse {
+      Redirect(routes.HomeController.index())
+      //Unauthorized("Oops, you are not connected")
+    }
   }
 
   def delete(id:Int) = Action{
@@ -34,10 +65,20 @@ class QuestionController @Inject()(cc: ControllerComponents, db: Database) exten
     Redirect(routes.QuestionController.index())
   }
 
-  def addpage = Action { 
+  def addpage = Action { request =>
     DBQuestion.applySeeder()
     var nowid = DBQuestion.dbmaps.size + 1
-    Ok(views.html.questionaddpage(nowid))
+
+    request.session.get("connected").map { user =>
+      request.session.get("admin").map { admin =>
+        Ok(views.html.questionaddpage(nowid, user, Try(admin.toBoolean).getOrElse(false)))
+      }.getOrElse {
+        Ok(views.html.questionaddpage(nowid, user))
+      }
+    }.getOrElse {
+      Redirect(routes.HomeController.index())
+      //Unauthorized("Oops, you are not connected")
+    }
   }
 
   def addqcm = Action {implicit request =>

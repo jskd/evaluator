@@ -36,8 +36,8 @@ trait FillQ extends Question{
 
 
 
-class QCMQuestion(_id:Int,_intitule:String,_answer:String,_opts:List[String]) 
-extends Question(_id,_intitule,_answer) 
+class QCMQuestion(_id:Int,_intitule:String,_answer:String,_opts:List[String])
+extends Question(_id,_intitule,_answer)
 with OptionsQ
 {
 	options = _opts
@@ -45,14 +45,14 @@ with OptionsQ
 }
 
 class FillQuestion(_id:Int,_intitule:String,_answer:String)
-extends Question(_id,_intitule,_answer) 
+extends Question(_id,_intitule,_answer)
 with FillQ
 {
 	override def isCorrect(reponse:Reponse):Boolean = answer equals reponse.reponseToString
 }
 
 class ImageFillQuestion(_id:Int,_intitule:String,_answer:String,_path:String)
-extends Question(_id,_intitule,_answer) 
+extends Question(_id,_intitule,_answer)
 with ImageQ
 with FillQ
 {
@@ -61,7 +61,7 @@ with FillQ
 }
 
 class ImageFillQuestionContains(_id:Int,_intitule:String,_answer:String,_path:String)
-extends Question(_id,_intitule,_answer) 
+extends Question(_id,_intitule,_answer)
 with ImageQ
 with FillQ
 {

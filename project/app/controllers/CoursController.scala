@@ -94,7 +94,7 @@ class CoursController @Inject()(cc: ControllerComponents, db: Database) extends 
     )
     val (cid, qid) = addForm.bindFromRequest.get
     var c = DBCours.getById(cid.toInt)
-    c.addqid(qid.toInt)
+    if(qid != "") c.addqid(qid.toInt)
     Redirect(routes.CoursController.getById(cid.toInt))
   }
 

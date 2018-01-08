@@ -62,7 +62,7 @@ class QuestionController @Inject()(cc: ControllerComponents, db: Database) exten
 
   def delete(id:Int) = Action{
     DBQuestion.delete(id)
-    Redirect(routes.QuestionController.index())
+    Redirect(routes.QuestionnaireController.index())
   }
 
   def addpage = Action { request =>

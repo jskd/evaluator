@@ -19,27 +19,25 @@
       <article>
         <h2>Ajouter une question</h2>
 
-      <hr width="100%" size="1" align="center" color="gray" />
+      <br/>
       <h1>QCM</h1>
-      <hr width="100%" size="1" align="center" color="gray" />
       <div>
 
             <form action="/question/addqcm" method="post">
                 <input type="hidden" name="qid" value="@nowid">
                 Title: <input type="text" name="title"><br/>
-                OP A: <input type="text" name="op1"><br/>
-                OP B: <input type="text" name="op2"><br/>
-                OP C: <input type="text" name="op3"><br/>
-                OP D: <input type="text" name="op4"><br/>
-                OP E: <input type="text" name="op5"><br/>
-                OP F: <input type="text" name="op6"><br/>
+                A: <input type="text" name="op1"><br/>
+                B: <input type="text" name="op2"><br/>
+                C: <input type="text" name="op3"><br/>
+                D: <input type="text" name="op4"><br/>
+                E: <input type="text" name="op5"><br/>
+                F: <input type="text" name="op6"><br/>
                 Answer : <input type="text" name="answer"><br/>
                 <input type="submit" value="Add">
             </form>
       </div>
-      <hr width="100%" size="1" align="center" color="gray" />
+      <br/>
       <h1>Fill</h1>
-      <hr width="100%" size="1" align="center" color="gray" />
       <div>
 
             <form action="/question/addfill" method="post">
@@ -50,9 +48,8 @@
             </form>
       </div>
 
-      <hr width="100%" size="1" align="center" color="gray" />
+      <br/>
       <h1>ImageFill</h1>
-      <hr width="100%" size="1" align="center" color="gray" />
       <div>
 
             <form action="/question/addimage" method="post" enctype="multipart/form-data">

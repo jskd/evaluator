@@ -23,6 +23,7 @@ class QuestionnaireController @Inject()(cc: ControllerComponents, db: Database) 
         for(id <- ql.qid){
             if(DBQuestion.has(id))
                 ql.addQuestion(DBQuestion.getById(id))
+
         }
     }
 
@@ -82,7 +83,7 @@ class QuestionnaireController @Inject()(cc: ControllerComponents, db: Database) 
     )
     val (qnid, qid) = addForm.bindFromRequest.get
     var qnaire = DBQuestionnaire.getById(qnid.toInt)
-    qnaire.addqid(qid.toInt)
+    if(qid != "") qnaire.addqid(qid.toInt)
     Redirect(routes.QuestionnaireController.index())
   }
 }

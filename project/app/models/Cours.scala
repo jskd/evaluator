@@ -9,4 +9,5 @@ class Cours(_id:Int,_categorie:String){
 	var qnaireid:List[Int] = Nil
 	def addqid(i:Int) = qnaireid = qnaireid :+ i
 	def addqid(li:List[Int]) = qnaireid = qnaireid ::: li
+  var inscrit = false
 }

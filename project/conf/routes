@@ -21,8 +21,8 @@ GET     /cours/create_new           controllers.CoursController.create_new
 POST    /cours/addcours             controllers.CoursController.add_cours
 GET     /cours/my_courses           controllers.CoursController.my_courses
 GET     /cours/get/:id              controllers.CoursController.getById(id:Int)
-GET    /cours/add/:cid/:qid               controllers.CoursController.add(cid:Int,qid:Int)
-GET     /cours/delete/:cid/:qid    controllers.CoursController.delete(cid:Int,qid:Int)
+GET     /cours/add/:cid/:qid        controllers.CoursController.add(cid:Int,qid:Int)
+GET     /cours/delete/:cid/:qid     controllers.CoursController.delete(cid:Int,qid:Int)
 
 GET     /question/index             controllers.QuestionController.index
 GET     /question/all               controllers.QuestionController.getAll
@@ -31,11 +31,15 @@ GET     /question/delete/:id        controllers.QuestionController.delete(id:Int
 
 GET     /question/addpage           controllers.QuestionController.addpage
 POST    /question/addqcm            controllers.QuestionController.addqcm
-POST    /question/addfill            controllers.QuestionController.addfill
-POST    /question/addimage           controllers.QuestionController.addimage
+POST    /question/addfill           controllers.QuestionController.addfill
+POST    /question/addimage          controllers.QuestionController.addimage
 
 
-GET     /questionnaire/get/:id           controllers.QuestionnaireController.getById(id:Int)
-GET     /questionnaire/index             controllers.QuestionnaireController.index
-GET     /questionnaire/delete/:qnid/:qid    controllers.QuestionnaireController.delete(qnid:Int,qid:Int)
-POST    /questionnaire/add               controllers.QuestionnaireController.add
+GET     /questionnaire/get/:id            controllers.QuestionnaireController.getById(id:Int)
+GET     /questionnaire/index              controllers.QuestionnaireController.index
+GET     /questionnaire/delete/:qnid/:qid  controllers.QuestionnaireController.delete(qnid:Int,qid:Int)
+POST    /questionnaire/add                controllers.QuestionnaireController.add
+
+
+GET     /inscription/add/:qid        controllers.HomeController.add(qid:Int)
+GET     /inscription/delete/:qid     controllers.HomeController.delete(qid:Int)

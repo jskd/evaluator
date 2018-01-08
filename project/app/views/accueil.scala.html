@@ -14,11 +14,11 @@
         @if(user != "") {
         <div class="liste_actions">
           <!-- SI UTILISATEUR INSCRIT AU COURS-->
-          <a class="lien_unsuscribe" href="" alt="Désinscription" title="Désinscription"></a>
+          <a class="lien_unsuscribe" href="inscription/delete/@q.id" alt="Désinscription" title="Désinscription"></a>
           <a class="lien_consult" href="cours/get/@q.id" alt="Voir le cours" title="Voir le cours"></a>
 
           <!-- SINON-->
-          <a class="lien_inscription" href="" alt="Inscription" title="Inscription"></a>
+          <a class="lien_inscription" href="inscription/add/@q.id" alt="Inscription" title="Inscription"></a>
         </div>
       }
 

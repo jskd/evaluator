@@ -33,29 +33,20 @@ class HomeController @Inject()(cc: ControllerComponents, db: Database) extends A
     // LES COURS NE SONT PAS DANS LA BDD
     var qlist = DBCours.getAll()
 
-    // Solution provisoir
-
-
-    // TODO: A suppr
-    var user_id = 1
-    if(request.session.get("speudo") == "user")
-      user_id = 2
-
-    qlist.foreach( question =>
-      db.withConnection { conn =>
-        val stmt = conn.createStatement
-        val rs = stmt.executeQuery("SELECT * FROM inscription WHERE id_user = '"
-          + user_id + "' and id_cour = '" + question.id + "';")
-
-        if(rs.next()){
-          question.inscrit = true
+    request.session.get("id").map { user_id =>
+      qlist.foreach( question =>
+        db.withConnection { conn =>
+          val stmt = conn.createStatement
+          val rs = stmt.executeQuery("SELECT * FROM inscription WHERE id_user = '"
+            + user_id + "' and id_cour = '" + question.id + "';")
+          if(rs.next()){
+            question.inscrit = true
+          } else {
+            question.inscrit = false
+          }
         }
-        else
-        {
-          question.inscrit = false
-        }
-      }
-    )
+      )
+    }
 
     request.session.get("connected").map { user =>
       request.session.get("admin").map { admin =>
@@ -73,32 +64,21 @@ class HomeController @Inject()(cc: ControllerComponents, db: Database) extends A
   def add(qid:Int) = Action {implicit request =>
 
     db.withConnection { conn =>
-
-      // TODO: A suppr
-      var user_id = 1
-      if(request.session.get("speudo") == "user")
-        user_id = 2
-
-      val stmt = conn.createStatement
-      val rs = stmt.execute("INSERT INTO inscription (id_user, id_cour) VALUES (  " + user_id +", "+ qid +");")
-
-      Redirect(routes.HomeController.index())
+      request.session.get("id").map { user_id =>
+        val stmt = conn.createStatement
+        val rs = stmt.execute("INSERT INTO inscription (id_user, id_cour) VALUES (  " + user_id +", "+ qid +");")
+      }
     }
+    Redirect(routes.HomeController.index())
   }
 
   def delete(qid:Int) = Action{implicit request =>
-
     db.withConnection { conn =>
-
-      // TODO: A suppr
-      var user_id = 1
-      if(request.session.get("speudo") == "user")
-        user_id = 2
-
-      val stmt = conn.createStatement
-      val rs = stmt.execute("DELETE FROM inscription WHERE id_user= '"+user_id+ "' and id_cour ='"+qid+ "';")
-
-      Redirect(routes.HomeController.index())
+      request.session.get("id").map { user_id =>
+        val stmt = conn.createStatement
+        val rs = stmt.execute("DELETE FROM inscription WHERE id_user= '"+user_id+ "' and id_cour ='"+qid+ "';")
+      }
     }
+    Redirect(routes.HomeController.index())
   }
 }

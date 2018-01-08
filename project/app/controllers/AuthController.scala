@@ -65,7 +65,8 @@ class AuthController @Inject()(cc: ControllerComponents, db: Database) extends A
 
         if(rs.next()){
           message = "Bonjour " + pseudo + ", vous êtes connecté !"
-          Redirect(routes.HomeController.index()).withSession("connected" -> pseudo, "admin" -> rs.getBoolean("admin").toString)
+          val id= rs.getString(1);
+          Redirect(routes.HomeController.index()).withSession("id" -> id, "connected" -> pseudo, "admin" -> rs.getBoolean("admin").toString)
           //Ok(views.html.index()).withSession("connected" -> pseudo)
         }
         else{

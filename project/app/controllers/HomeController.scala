@@ -44,12 +44,11 @@ class HomeController @Inject()(cc: ControllerComponents, db: Database) extends A
   }
 
   def add(qid:Int) = Action {implicit request =>
-    var qlist = DBCours.getAll()
-    Ok(views.html.index(qlist))
+    Redirect(routes.HomeController.index())
   }
 
   def delete(qid:Int) = Action{
-    var qlist = DBCours.getAll()
-    Ok(views.html.index(qlist))
+
+    Redirect(routes.HomeController.index())
   }
 }

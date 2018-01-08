@@ -13,19 +13,14 @@
 
         @if(user != "") {
         <div class="liste_actions">
-
-
           @if(q.inscrit) {
-          <a class="lien_unsuscribe" href="inscription/delete/@q.id" alt="Désinscription" title="Désinscription"></a>
-          <a class="lien_consult" href="cours/get/@q.id" alt="Voir le cours" title="Voir le cours"></a>
-} else {
-
-          <!-- SINON-->
-          <a class="lien_inscription" href="inscription/add/@q.id" alt="Inscription" title="Inscription"></a>
-        }
+            <a class="lien_unsuscribe" href="inscription/delete/@q.id" alt="Désinscription" title="Désinscription"></a>
+            <a class="lien_consult" href="cours/get/@q.id" alt="Voir le cours" title="Voir le cours"></a>
+          } else {
+            <a class="lien_inscription" href="inscription/add/@q.id" alt="Inscription" title="Inscription"></a>
+          }
         </div>
       }
-
     </div>
   }
 </article>

@@ -23,15 +23,16 @@
         <h2>Mes cours actuels</h2>
 
         @for(q <- qs){
+          @if(q.inscrit) {
           <div class="block_liste_cours">
               <p>Cours: @q.id  @q.categorie </p>
 
               <div class="liste_actions">
-                <a class="lien_unsuscribe" href="" alt="Désinscription" title="Désinscription"></a>
+                <a class="lien_unsuscribe" href="/inscription/delete/@q.id" alt="Désinscription" title="Désinscription"></a>
                 <a class="lien_consult" href="/cours/get/@q.id" alt="Voir le cours" title="Voir le cours"></a>
               </div>
-
           </div>
+          }
         }
       </article>
 

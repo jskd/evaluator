@@ -1,0 +1,149 @@
+@charset "utf-8";
+
+.block_liste_cours{
+	width: 630px;
+	height: 40px;
+	margin:auto;
+	margin-bottom: 10px;
+
+	background-color: #F9FAE9;
+	border: solid lightgrey 1px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	transition:linear all 0.2s;
+
+	font-style: italic;
+	font-size: 14px;
+	font-family:Verdana, Geneva, sans-serif;
+}
+
+.block_liste_cours:hover{
+	background-color: #E9F3F9;
+	box-shadow: 0px 0px 7px #CCC;
+	border: solid #999 1px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	transition:linear all 0.1s;
+}
+
+.block_liste_cours img{
+	float: left;
+	margin-top: 8px;
+	margin-left: 10px;
+}
+
+.block_liste_cours p{
+	float: left;
+	width: 450px;
+	margin-top: 12px;
+	margin-left: 10px;
+}
+
+.one_question{
+	width: 630px;
+	height: auto;
+	margin:auto;
+	margin-bottom: 15px;
+	padding:5px;
+
+	background-color: #FFF;
+	border: solid lightgrey 1px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	transition:linear all 0.2s;
+
+	font-style: italic;
+	font-size: 14px;
+	font-family:Verdana, Geneva, sans-serif;
+}
+
+.one_question p{
+	margin-left: 15px;
+}
+
+.liste_actions{
+	float: right;
+	width: 130px;
+	height: 35px;
+	margin-top: 5px;
+}
+
+.liste_actions a{
+	float: right;
+	display: block;
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+}
+
+.lien_add{
+	background-image: url(../images/Add-icon.png);
+	background-size: contain;
+}
+
+.lien_inscription{
+	background-image: url(../images/Accept-icon.png);
+	background-size: contain;
+}
+
+.lien_unsuscribe{
+	background-image: url(../images/close-icon.png);
+	background-size: contain;
+}
+
+.lien_consult{
+	background-image: url(../images/read_off.png);
+	background-size: contain;
+}
+
+.lien_consult:hover{
+	background-image: url(../images/read.png);
+	background-size: contain;
+}
+
+/* CSS venant de http://www.bestcssbuttongenerator.com */
+.button_green{
+  float:right;
+  margin-top:20px;
+	width:130px;
+	height:30px;
+	margin-bottom:20px;
+  -moz-box-shadow:inset 0px 1px 0px 0px #9acc85;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #9acc85;
+	box-shadow:inset 0px 1px 0px 0px #9acc85;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #74ad5a), color-stop(1, #68a54b));
+	background:-moz-linear-gradient(top, #74ad5a 5%, #68a54b 100%);
+	background:-webkit-linear-gradient(top, #74ad5a 5%, #68a54b 100%);
+	background:-o-linear-gradient(top, #74ad5a 5%, #68a54b 100%);
+	background:-ms-linear-gradient(top, #74ad5a 5%, #68a54b 100%);
+	background:linear-gradient(to bottom, #74ad5a 5%, #68a54b 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#74ad5a', endColorstr='#68a54b',GradientType=0);
+	background-color:#74ad5a;
+	border:1px solid #3b6e22;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:6px 12px;
+	text-decoration:none;
+
+}
+
+/* CSS venant de http://www.bestcssbuttongenerator.com */
+.button_green:hover {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #68a54b), color-stop(1, #74ad5a));
+	background:-moz-linear-gradient(top, #68a54b 5%, #74ad5a 100%);
+	background:-webkit-linear-gradient(top, #68a54b 5%, #74ad5a 100%);
+	background:-o-linear-gradient(top, #68a54b 5%, #74ad5a 100%);
+	background:-ms-linear-gradient(top, #68a54b 5%, #74ad5a 100%);
+	background:linear-gradient(to bottom, #68a54b 5%, #74ad5a 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#68a54b', endColorstr='#74ad5a',GradientType=0);
+	background-color:#68a54b;
+	color:#ffffff;
+	font-size:14px;
+}

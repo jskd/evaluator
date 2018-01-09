@@ -1,0 +1,33 @@
+@(nowid: Int, user: String = "", admin: Boolean = false)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Nouveau cours</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/custom.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+        <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
+    </head>
+    <body>
+      <section id="top">
+        <div class="wrapper">
+          <h1>EVALUATOR</h1>
+        </div>
+      </section>
+
+      <div id="content" class="wrapper doc">
+        <article>
+          <h2>Création d'un cours</h2>
+
+          <form action="/cours/addcours" method="post">
+              <input type="hidden" name="cid" value="@nowid">
+              Title: <input type="text" name="title"><br/>
+              <input class="button_green" type="submit" value="Sauvegarder"/>
+          </form>
+
+        </article>
+        @menu(user, admin)
+      </div>
+    </body>
+</html>

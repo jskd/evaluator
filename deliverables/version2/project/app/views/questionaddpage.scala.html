@@ -1,0 +1,66 @@
+@(nowid: Int, user: String = "", admin: Boolean = false)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Question</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+        <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
+    </head>
+    <body>
+      <section id="top">
+        <div class="wrapper">
+          <h1>Add questions</h1>
+        </div>
+      </section>
+
+      <div id="content" class="wrapper doc">
+      <article>
+        <h2>Ajouter une question</h2>
+
+      <br/>
+      <h1>QCM</h1>
+      <div>
+
+            <form action="/question/addqcm" method="post">
+                <input type="hidden" name="qid" value="@nowid">
+                Title: <input type="text" name="title"><br/>
+                A: <input type="text" name="op1"><br/>
+                B: <input type="text" name="op2"><br/>
+                C: <input type="text" name="op3"><br/>
+                D: <input type="text" name="op4"><br/>
+                E: <input type="text" name="op5"><br/>
+                F: <input type="text" name="op6"><br/>
+                Answer : <input type="text" name="answer"><br/>
+                <input type="submit" value="Add">
+            </form>
+      </div>
+      <br/>
+      <h1>Fill</h1>
+      <div>
+
+            <form action="/question/addfill" method="post">
+                <input type="hidden" name="qid" value="@nowid">
+                Title: <input type="text" name="title"><br/>
+                Answer : <input type="text" name="answer"><br/>
+                <input type="submit" value="Add">
+            </form>
+      </div>
+
+      <br/>
+      <h1>ImageFill</h1>
+      <div>
+
+            <form action="/question/addimage" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="qid" value="@nowid">
+                Title: <input type="text" name="title"><br/>
+                Answer : <input type="text" name="answer"><br/>
+                Image : <input type="file" name="pic"><br/>
+                <input type="submit" value="Add">
+            </form>
+      </div>
+    </article>
+    @menu(user, admin)
+    </body>
+</html>

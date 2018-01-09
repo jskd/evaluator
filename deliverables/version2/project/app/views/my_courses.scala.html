@@ -1,0 +1,44 @@
+@(qs: List[Cours], user: String = "", admin: Boolean = false, style: String = "scala")
+
+@defining(play.core.PlayVersion.current) { version =>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Nouveau cours</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/custom.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+        <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
+    </head>
+    <body>
+      <section id="top">
+        <div class="wrapper">
+          <h1>EVALUATOR</h1>
+        </div>
+      </section>
+
+      <div id="content" class="wrapper doc">
+      <article>
+        <h2>Mes cours actuels</h2>
+
+        @for(q <- qs){
+          @if(q.inscrit) {
+          <div class="block_liste_cours">
+              <p>Cours: @q.id  @q.categorie </p>
+
+              <div class="liste_actions">
+                <a class="lien_unsuscribe" href="/inscription/delete/@q.id" alt="Désinscription" title="Désinscription"></a>
+                <a class="lien_consult" href="/cours/get/@q.id" alt="Voir le cours" title="Voir le cours"></a>
+              </div>
+          </div>
+          }
+        }
+      </article>
+
+      @menu(user, admin, style = "scala")
+
+      </div>
+    </body>
+</html>
+}

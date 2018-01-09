@@ -1,0 +1,16 @@
+@(qs: List[Cours], user: String = "", admin: Boolean = false)
+
+@*
+ * Call the `main` template with two arguments. The first
+ * argument is a `String` with the title of the page, the second
+ * argument is an `Html` object containing the body of the page.
+ *@
+@main("Bienvenue") {
+
+    @*
+     * Get an `Html` object by calling the built-in Play welcome
+     * template and passing a `String` message.
+     *@
+    @accueil(qs, user, admin, style = "scala")
+
+}

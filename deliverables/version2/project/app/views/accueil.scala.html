@@ -1,0 +1,30 @@
+@(qs: List[Cours], user: String = "", admin: Boolean = false, style: String = "scala")
+
+@defining(play.core.PlayVersion.current) { version =>
+
+<div id="content" class="wrapper doc">
+<article>
+  <h1>Bienvenue sur Evaluator !</h1>
+  <h2>Liste des cours disponibles</h2>
+
+  @for(q <- qs){
+    <div class="block_liste_cours">
+        <p>Cours: @q.id  @q.categorie </p>
+
+        @if(user != "") {
+        <div class="liste_actions">
+          @if(q.inscrit) {
+            <a class="lien_unsuscribe" href="inscription/delete/@q.id" alt="Désinscription" title="Désinscription"></a>
+            <a class="lien_consult" href="cours/get/@q.id" alt="Voir le cours" title="Voir le cours"></a>
+          } else {
+            <a class="lien_inscription" href="inscription/add/@q.id" alt="Inscription" title="Inscription"></a>
+          }
+        </div>
+      }
+    </div>
+  }
+</article>
+
+@menu(user, admin, style = "scala")
+</div>
+}
